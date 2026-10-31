@@ -1,7 +1,7 @@
 name: Build APK
 on:
   push:
-    branches: [main, master]
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: write
@@ -17,7 +17,35 @@ jobs:
         with:
           distribution: temurin
           java-version: 21
-      - name: Fixed signing key (so updates install over old version and keep data)
+      - name: Build
         run: |
           mkdir -p ~/.android
-          echo "MIIKZgIBAzCCChAGCSqGSIb3DQEHAaCCCgEEggn9MIIJ+TCCBcAGCSqGSIb3DQEHAaCCBbEEggWtMIIFqTCCBaUGCyqGSIb3DQEMCgECoIIFQDCCBTwwZgYJKoZIhvcNAQUNMFkwOAYJKoZIhvcNAQUMMCsEFFFUzLwigy2yUz4UUX0n+8J2NflrAgInEAIBIDAMBggqhkiG9w0CCQUAMB0GCWCGSAFlAwQBKgQQOt5rw0VrU+RK45lsa7yOywSCBNDyDCSiYBhk6wh+6XPdUJGX19qQjCBdvBcuHFp4OBFdssaXCjtpBiz9qcMx6nhPhkZFwmSlEcR4tWr6dWL15rXncoPmMoW1zuo72BshrYdrKObLgALxYRcjdWb7mCNxl/sQq2r8cSnbkV8ctgr+znwHi/a5twHB0l7UxFenhGwa/RKnOfTUOu7DsfmmCGNVIiraPPabap8rT5/Gmrb+ZhnRe68hVWeN+z+qenXwVzt8YvsVSHTvvXoOciLr6p3cfP6s8nOP8sRlfBI+aFsPmuKCU+X2H3n+ciZ8xT8OnZb4XCk5Be/Q/4uT+ULVcoSRpjkWmwQIXJSsE/VeByvuQGi76MR2Tt/obi5z6Fx7ImSmZZaylFT/XWB29mZqKEYE18zAeBscg0Vs4tDqNk97jmuKe7JJbPQrW88Jsaez5l5iLd0s3iQsdaogBNpVAKY39PywMHAhYZcNk6FB5tWJZrH+dmiVMElp6g/49420HGDMFqd+9ICjBZopqnBs1ryUaeXhgMGpBGc2ef+JRXGfUwg0EOBzDqrRqyWnjn2DOHzlz1E8I/Cnppokazf34Pwqb4WKagNcDWiBw7Z34T6kbz8iqWXQM8XKdddkOA0lqX8hzZ2iU/wxnfgp9tE/Dcc0i1f+eONAPBowklh9U1lW3+PGF4uydsafuB58JMbK9sVs/uxQ9Yx5CBhfgTIJva74wsCihbOJ1t80EwOruUVf9QcZbLzI4d499TP+FV3AxLkJKreBYqCk78xKJMkKtLBjsBsZutuxqflVHagy81W6g/r9roSQooWqwRlI/OrirsvqtsAzXn5LWbfndazv7J6x6L7syazRr9KiHVKXTQlp8anquL2fmZZEGJ45ivmeyqLdNXWfUTTY1uiF7ql4yRtwQrMtPHON+Wupu4yUtfahED2RrgQHLxm6EyoAeW3rwHsS4Dn0Gv8SiYPU8dJNbZuLuPV1UDZdqQTrPYcrPDFAB5jXRqhnh6hIK8tFwZKiDtJQUGPEYdOWD+cQZo89fhrYvj417gqZEZAdbAR2CA9z/l8HIGJqFqeD4p9S9J7/MpuNU2sjFloFa7BaNxhpFr0E60w25awG0CdaXxeYWH8QEvEeYginMIPO6YRzfT/ukJxAhPpMJYfN8hQ9iMukq5/aAXVFnGWjhaogdiw21VgIxcJ0VvyUhJhqhiUemv6DI5KxylUgEAy6tv5xMIccC0fLkDdKTJy5cnpIiiUXpzIkRX5A50Ix2eMxBlHcsCoarH8b3DvmMH34M8Ag1hNK4GPj/CNZkjg+d+5PLu+kclVHv8G4omVxkXb5GjnJsxhTkdFLEvNqHSwHYtC2SHVDpzNdYha58RoAR7oqPzQOyX0hGkA+T5dRlawTawhLC09clAR9cprSoaD85xpFqYuXINQBVQlhtN9B36sC5vWtIbNLWfhkQJyW04AHeYowttu8TXpaERv04RBZrx3+aysLoQSMtsdXTLOv9mNOsqW8G/fQIyIUalgZjmWORYHiIsv9KOP09IQEOLaG7s4kVcWhqza93alA1xF2IRFzMXN4Ge8VGN5ieqyrcl2rIeG0ns4KFW+7GQegIpZk+JTcpxx4ccNX0NrDBwgCzfUx+I
+          KS=~/.android/debug.keystore
+          curl -sL https://raw.githubusercontent.com/Alrawais010/Weladat/main/.github/workflows/apk.yml | grep -o 'echo "MII[^"]*"' | cut -d'"' -f2 | base64 -d > $KS || true
+          [ -s $KS ] || keytool -genkeypair -keystore $KS -storepass android -keypass android -alias androiddebugkey -keyalg RSA -validity 10000 -dname "CN=Android"
+          REPO="${GITHUB_REPOSITORY#*/}"
+          NAME="$(tr -d '\r\n' < appname.txt)"
+          ID="com.alrawais010.$(echo "$REPO" | tr 'A-Z' 'a-z')"
+          B="$RUNNER_TEMP/b"
+          mkdir -p "$B/www"
+          cp index.html "$B/www/"
+          cd "$B"
+          npm init -y
+          npm i @capacitor/core@7 @capacitor/cli@7 @capacitor/android@7 @capacitor/filesystem@7 @capacitor/geolocation@7
+          npx cap init "$NAME" "$ID" --web-dir www
+          npx cap add android
+          M=android/app/src/main/AndroidManifest.xml
+          sed -i 's#</manifest>#<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />\n<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />\n</manifest>#' $M
+          npx cap sync android
+          cd android
+          sed -i "s/versionCode 1/versionCode $GITHUB_RUN_NUMBER/" app/build.gradle
+          chmod +x gradlew
+          ./gradlew assembleDebug -Pandroid.injected.signing.store.file=$KS -Pandroid.injected.signing.store.password=android -Pandroid.injected.signing.key.alias=androiddebugkey -Pandroid.injected.signing.key.password=android
+          cp app/build/outputs/apk/debug/app-debug.apk "$GITHUB_WORKSPACE/$REPO.apk"
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          REPO="${GITHUB_REPOSITORY#*/}"
+          gh release delete apk-latest -y --cleanup-tag --repo "$GITHUB_REPOSITORY" || true
+          gh release create apk-latest "$REPO.apk" --repo "$GITHUB_REPOSITORY" --title "APK" --notes "APK"
