@@ -1,0 +1,23 @@
+name: Build APK
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - name: Fixed signing key (so updates install over old version and keep data)
+        run: |
+          mkdir -p ~/.android
+          echo "MIIKZgIBAzCCChAGCSqGSIb3DQEHAaCCCgEEggn9MIIJ+TCCBcAGCSqGSIb3DQEHAaCCBbEEggWtMIIFqTCCBaUGCyqGSIb3DQEMCgECoIIFQDCCBTwwZgYJKoZIhvcNAQUNMFkwOAYJKoZIhvcNAQUMMCsEFFFUzLwigy2yUz4UUX0n+8J2NflrAgInEAIBIDAMBggqhkiG9w0CCQUAMB0GCWCGSAFlAwQBKgQQOt5rw0VrU+RK45lsa7yOywSCBNDyDCSiYBhk6wh+6XPdUJGX19qQjCBdvBcuHFp4OBFdssaXCjtpBiz9qcMx6nhPhkZFwmSlEcR4tWr6dWL15rXncoPmMoW1zuo72BshrYdrKObLgALxYRcjdWb7mCNxl/sQq2r8cSnbkV8ctgr+znwHi/a5twHB0l7UxFenhGwa/RKnOfTUOu7DsfmmCGNVIiraPPabap8rT5/Gmrb+ZhnRe68hVWeN+z+qenXwVzt8YvsVSHTvvXoOciLr6p3cfP6s8nOP8sRlfBI+aFsPmuKCU+X2H3n+ciZ8xT8OnZb4XCk5Be/Q/4uT+ULVcoSRpjkWmwQIXJSsE/VeByvuQGi76MR2Tt/obi5z6Fx7ImSmZZaylFT/XWB29mZqKEYE18zAeBscg0Vs4tDqNk97jmuKe7JJbPQrW88Jsaez5l5iLd0s3iQsdaogBNpVAKY39PywMHAhYZcNk6FB5tWJZrH+dmiVMElp6g/49420HGDMFqd+9ICjBZopqnBs1ryUaeXhgMGpBGc2ef+JRXGfUwg0EOBzDqrRqyWnjn2DOHzlz1E8I/Cnppokazf34Pwqb4WKagNcDWiBw7Z34T6kbz8iqWXQM8XKdddkOA0lqX8hzZ2iU/wxnfgp9tE/Dcc0i1f+eONAPBowklh9U1lW3+PGF4uydsafuB58JMbK9sVs/uxQ9Yx5CBhfgTIJva74wsCihbOJ1t80EwOruUVf9QcZbLzI4d499TP+FV3AxLkJKreBYqCk78xKJMkKtLBjsBsZutuxqflVHagy81W6g/r9roSQooWqwRlI/OrirsvqtsAzXn5LWbfndazv7J6x6L7syazRr9KiHVKXTQlp8anquL2fmZZEGJ45ivmeyqLdNXWfUTTY1uiF7ql4yRtwQrMtPHON+Wupu4yUtfahED2RrgQHLxm6EyoAeW3rwHsS4Dn0Gv8SiYPU8dJNbZuLuPV1UDZdqQTrPYcrPDFAB5jXRqhnh6hIK8tFwZKiDtJQUGPEYdOWD+cQZo89fhrYvj417gqZEZAdbAR2CA9z/l8HIGJqFqeD4p9S9J7/MpuNU2sjFloFa7BaNxhpFr0E60w25awG0CdaXxeYWH8QEvEeYginMIPO6YRzfT/ukJxAhPpMJYfN8hQ9iMukq5/aAXVFnGWjhaogdiw21VgIxcJ0VvyUhJhqhiUemv6DI5KxylUgEAy6tv5xMIccC0fLkDdKTJy5cnpIiiUXpzIkRX5A50Ix2eMxBlHcsCoarH8b3DvmMH34M8Ag1hNK4GPj/CNZkjg+d+5PLu+kclVHv8G4omVxkXb5GjnJsxhTkdFLEvNqHSwHYtC2SHVDpzNdYha58RoAR7oqPzQOyX0hGkA+T5dRlawTawhLC09clAR9cprSoaD85xpFqYuXINQBVQlhtN9B36sC5vWtIbNLWfhkQJyW04AHeYowttu8TXpaERv04RBZrx3+aysLoQSMtsdXTLOv9mNOsqW8G/fQIyIUalgZjmWORYHiIsv9KOP09IQEOLaG7s4kVcWhqza93alA1xF2IRFzMXN4Ge8VGN5ieqyrcl2rIeG0ns4KFW+7GQegIpZk+JTcpxx4ccNX0NrDBwgCzfUx+I
