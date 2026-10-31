@@ -15,38 +15,51 @@ body{padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
 header{display:flex;align-items:center;gap:10px;margin-bottom:14px}
 header h1{margin:0;font-size:26px;flex:1;color:var(--sand)}
 .ib{background:var(--card2);border:0;color:var(--txt);border-radius:12px;padding:10px 14px;font-size:16px;font-family:inherit}
-.gps{font-size:13px;color:var(--mute);background:var(--card);border-radius:12px;padding:8px 12px;margin-bottom:14px;display:flex;gap:8px;align-items:center}
+.gps{font-size:13px;color:var(--mute);background:var(--card);border-radius:12px;padding:8px 12px;margin-bottom:12px;display:flex;gap:8px;align-items:center}
 .dot{width:10px;height:10px;border-radius:50%;background:var(--bad);flex:none}
 .dot.ok{background:var(--ok)}.dot.mid{background:var(--warn)}
+.tabs{display:flex;background:var(--card);border-radius:14px;padding:4px;margin-bottom:14px;gap:4px}
+.tabs button{flex:1;border:0;background:none;color:var(--mute);font-size:16px;font-weight:700;padding:10px 4px;border-radius:10px;font-family:inherit}
+.tabs button.on{background:var(--acc);color:#2b1d10}
 .list{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
 .pl{background:var(--card);border-radius:18px;padding:16px 14px;border-right:6px solid var(--c,#f0a23a);position:relative;min-height:112px;display:flex;flex-direction:column;gap:6px}
 .pl:active{transform:scale(.98)}
-.pl b{font-size:20px;line-height:1.3}
+.pl b{font-size:20px;line-height:1.3;padding-left:28px}
 .pl .d{font-size:22px;color:var(--sand);font-weight:700}
-.pl .s{font-size:13px;color:var(--mute)}
+.pl .s{font-size:13px;color:var(--mute);line-height:1.6}
 .pl .ed{position:absolute;top:8px;left:8px;background:none;border:0;color:var(--mute);font-size:18px;padding:6px}
 .mini{width:22px;height:22px;display:inline-block;vertical-align:middle;transition:transform .3s}
 .empty{text-align:center;color:var(--mute);padding:40px 10px;line-height:1.9}
-.fab{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);background:var(--acc);color:#2b1d10;border:0;border-radius:30px;padding:16px 28px;font-size:18px;font-weight:700;font-family:inherit;box-shadow:0 6px 20px #0008}
+.fab{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);background:var(--acc);color:#2b1d10;border:0;border-radius:30px;padding:16px 28px;font-size:18px;font-weight:700;font-family:inherit;box-shadow:0 6px 20px #0008;white-space:nowrap}
+.fab.rec{background:#c0392b;color:#fff}
 .spacer{height:90px}
-/* nav */
+#recBar{display:none;position:sticky;top:0;z-index:9;background:#7a1f16;color:#fff;padding:10px 16px;font-size:15px;font-weight:700;align-items:center;gap:10px}
+#recBar.on{display:flex}
+#recBar span{flex:1}
+#recBar button{background:#fff;color:#7a1f16;border:0;border-radius:10px;padding:8px 12px;font-weight:800;font-family:inherit;font-size:15px}
+.blink{width:12px;height:12px;border-radius:50%;background:#ff5544;animation:bl 1s infinite}
+@keyframes bl{50%{opacity:.2}}
 #nav h2{text-align:center;margin:4px 0 2px;font-size:28px;color:var(--sand)}
 .sub{text-align:center;color:var(--mute);font-size:14px}
-.compass{position:relative;width:min(82vw,380px);aspect-ratio:1;margin:18px auto 8px}
+.step{text-align:center;background:var(--card);border-radius:12px;padding:8px;margin-top:8px;font-size:15px;color:var(--sand);display:none}
+.compass{position:relative;width:min(78vw,360px);aspect-ratio:1;margin:14px auto 8px}
 .ring{position:absolute;inset:0;border-radius:50%;border:3px solid var(--card2);background:radial-gradient(circle,#2e2215 0%,#1f160d 70%)}
-.ring span{position:absolute;font-weight:700;color:var(--mute);font-size:18px}
 #ringR{position:absolute;inset:0;transition:transform .25s linear}
 .arrow{position:absolute;inset:0;transition:transform .25s linear}
 .arrow svg{width:100%;height:100%}
-.big{text-align:center;font-size:56px;font-weight:800;margin:6px 0 0;color:var(--txt)}
+.big{text-align:center;font-size:52px;font-weight:800;margin:6px 0 0;color:var(--txt)}
 .big small{font-size:22px;color:var(--mute);font-weight:600}
-.row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.total{text-align:center;color:var(--mute);font-size:15px;margin-top:2px;display:none}
+.row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
 .box{background:var(--card);border-radius:14px;padding:10px;text-align:center}
 .box i{display:block;font-style:normal;color:var(--mute);font-size:12px;margin-bottom:4px}
-.box b{font-size:19px}
+.box b{font-size:18px}
+.nbtns{display:none;gap:8px;margin-top:12px}
+.nbtns button{flex:1}
+canvas.map{width:100%;height:240px;background:#17100a;border-radius:14px;margin-top:12px;display:block}
 .note{margin-top:12px;background:var(--card);border-radius:12px;padding:10px 12px;font-size:13px;color:var(--mute);line-height:1.7}
 .arrived{background:#1f4d27;color:#d6ffdc;text-align:center;border-radius:14px;padding:14px;font-size:22px;font-weight:700;margin-top:12px;display:none}
-/* form */
+.offw{background:#5a3a10;color:#ffe2b0;text-align:center;border-radius:12px;padding:8px;font-size:15px;margin-top:10px;display:none}
 label{display:block;margin:14px 0 6px;color:var(--mute);font-size:14px}
 input,textarea,select{width:100%;background:var(--card);color:var(--txt);border:1px solid var(--card2);border-radius:12px;padding:12px;font-size:17px;font-family:inherit}
 textarea{min-height:70px;direction:ltr;text-align:left}
@@ -57,294 +70,459 @@ textarea{min-height:70px;direction:ltr;text-align:left}
 .colors button.sel{border-color:#fff}
 .hint{font-size:12px;color:var(--mute);margin-top:6px;line-height:1.7}
 .ok-t{color:var(--ok)}
+.stops{display:flex;flex-direction:column;gap:8px}
+.stop{display:flex;align-items:center;gap:8px;background:var(--card);border-radius:12px;padding:8px 10px;border-right:5px solid var(--c)}
+.stop .n{background:var(--acc);color:#2b1d10;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:800;flex:none}
+.stop b{flex:1;font-size:17px}
+.stop button{background:var(--card2);border:0;color:var(--txt);border-radius:8px;width:36px;height:36px;font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{background:var(--card);color:var(--txt);border:0;border-right:4px solid var(--c);border-radius:20px;padding:10px 14px;font-size:16px;font-family:inherit}
+.stat{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 </style>
 </head>
 <body>
-
-<!-- الصفحة الأولى: الأماكن -->
+<div id="recBar"><div class="blink"></div><span id="recTxt">يسجّل الأثر</span><button onclick="stopRec()">⏹ إيقاف</button></div>
 <section class="page on" id="home">
- <header><h1>🧭 دليلي</h1><button class="ib" onclick="go('set')">⚙️</button></header>
- <div class="gps"><span class="dot" id="gDot"></span><span id="gTxt">جارٍ تحديد موقعك…</span></div>
- <div class="list" id="list"></div>
- <div class="spacer"></div>
- <button class="fab" onclick="openForm()">＋ إضافة مكان</button>
+<header><h1>🧭 دليلي</h1><button class="ib" onclick="go('set')">⚙️</button></header>
+<div class="gps"><span class="dot" id="gDot"></span><span id="gTxt">جارٍ تحديد موقعك…</span></div>
+<div class="tabs"><button id="t_places" onclick="setTab('places')">الأماكن</button><button id="t_routes" onclick="setTab('routes')">المسارات</button><button id="t_tracks" onclick="setTab('tracks')">الآثار</button></div>
+<div class="list" id="list"></div>
+<div class="spacer"></div>
+<button class="fab" id="fab" onclick="fabClick()">＋ إضافة مكان</button>
 </section>
-
-<!-- صفحة الاتجاه -->
 <section class="page" id="nav">
- <header><button class="ib" onclick="go('home')">→ الأماكن</button><span style="flex:1"></span><button class="ib" onclick="openForm(cur)">✏️</button></header>
- <h2 id="nName"></h2>
- <div class="sub" id="nSub"></div>
- <div class="compass">
-  <div class="ring"></div>
-  <div id="ringR">
-   <span style="position:absolute;top:6px;left:50%;transform:translateX(-50%);color:#ff6b5b;font-weight:800;font-size:20px">ش</span>
-   <span style="position:absolute;bottom:6px;left:50%;transform:translateX(-50%);color:var(--mute);font-weight:700">ج</span>
-   <span style="position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--mute);font-weight:700">شر</span>
-   <span style="position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--mute);font-weight:700">غ</span>
-  </div>
-  <div class="arrow" id="arrow">
-   <svg viewBox="0 0 100 100"><path d="M50 8 L72 70 L50 58 L28 70 Z" fill="#f0a23a" stroke="#2b1d10" stroke-width="2" stroke-linejoin="round"/><circle cx="50" cy="50" r="4" fill="#2b1d10"/></svg>
-  </div>
- </div>
- <div class="big" id="nDist">—</div>
- <div class="arrived" id="arrived">✅ وصلت إلى المكان</div>
- <div class="row">
-  <div class="box"><i>الاتجاه</i><b id="nBear">—</b></div>
-  <div class="box"><i>السرعة</i><b id="nSpd">—</b></div>
-  <div class="box"><i>الوقت المتوقع</i><b id="nEta">—</b></div>
- </div>
- <div class="row">
-  <div class="box"><i>دقة الـGPS</i><b id="nAcc">—</b></div>
-  <div class="box"><i>مصدر الاتجاه</i><b id="nSrc" style="font-size:15px">—</b></div>
-  <div class="box"><i>اتجاهك</i><b id="nHead">—</b></div>
- </div>
- <div class="note" id="nNote">السهم يشير إلى المكان بخط مستقيم. وأنت تمشي بالسيارة يأخذ الاتجاه من حركتك (أدق داخل السيارة)، وإذا وقفت يأخذه من بوصلة الجوال — امسك الجوال مستويًا وبعيدًا عن الحديد.</div>
+<header><button class="ib" onclick="leaveNav()">→ رجوع</button><span style="flex:1"></span><button class="ib" id="nEdit" onclick="openForm(nv.id)">✏️</button></header>
+<h2 id="nName"></h2>
+<div class="sub" id="nSub"></div>
+<div class="step" id="nStep"></div>
+<div class="compass">
+<div class="ring"></div>
+<div id="ringR">
+<span style="position:absolute;top:6px;left:50%;transform:translateX(-50%);color:#ff6b5b;font-weight:800;font-size:20px">ش</span>
+<span style="position:absolute;bottom:6px;left:50%;transform:translateX(-50%);color:var(--mute);font-weight:700">ج</span>
+<span style="position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--mute);font-weight:700">شر</span>
+<span style="position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--mute);font-weight:700">غ</span>
+</div>
+<div class="arrow" id="arrow">
+<svg viewBox="0 0 100 100"><path d="M50 8 L72 70 L50 58 L28 70 Z" fill="#f0a23a" stroke="#2b1d10" stroke-width="2" stroke-linejoin="round"/><circle cx="50" cy="50" r="4" fill="#2b1d10"/></svg>
+</div>
+</div>
+<div class="big" id="nDist">—</div>
+<div class="total" id="nTotal"></div>
+<div class="offw" id="nOff"></div>
+<div class="arrived" id="arrived">✅ وصلت</div>
+<div class="nbtns" id="nBtns"><button class="btn b2" onclick="routeStep(-1)">→ السابق</button><button class="btn b2" onclick="routeStep(1)">التالي ←</button></div>
+<div class="row">
+<div class="box"><i>الاتجاه</i><b id="nBear">—</b></div>
+<div class="box"><i>السرعة</i><b id="nSpd">—</b></div>
+<div class="box"><i>الوقت المتوقع</i><b id="nEta">—</b></div>
+</div>
+<div class="row">
+<div class="box"><i>دقة الـGPS</i><b id="nAcc">—</b></div>
+<div class="box"><i>مصدر الاتجاه</i><b id="nSrc" style="font-size:15px">—</b></div>
+<div class="box"><i>اتجاهك</i><b id="nHead">—</b></div>
+</div>
+<canvas class="map" id="nMap"></canvas>
+<div class="note" id="nNote">السهم يشير بخط مستقيم. وأنت تمشي بالسيارة يأخذ الاتجاه من حركتك (أدق داخل السيارة)، وإذا وقفت يأخذه من بوصلة الجوال — امسك الجوال مستويًا وبعيدًا عن الحديد.</div>
 </section>
-
-<!-- إضافة / تعديل مكان -->
 <section class="page" id="form">
- <header><button class="ib" onclick="closeForm()">✕ إلغاء</button><h1 id="fTitle" style="font-size:20px;text-align:center">مكان جديد</h1></header>
- <label>اسم المكان</label>
- <input id="fName" placeholder="مثال: المخيم، البئر، المراح">
- <label>الإحداثيات</label>
- <button class="btn b1" style="margin-top:0" onclick="useHere()">📍 حفظ موقعي الحالي</button>
- <textarea id="fCoord" placeholder="24.7136, 46.6753" oninput="checkCoord()"></textarea>
- <div class="hint" id="fHint">أو الصق الإحداثيات (من خرائط قوقل أو من شخص أرسلها لك) — تقبل الأرقام العربية والإنجليزية، والدرجات والدقائق.</div>
- <label>اللون</label>
- <div class="colors" id="fColors"></div>
- <label>ملاحظة (اختياري)</label>
- <input id="fNote" placeholder="مثال: بعد الطعس الكبير">
- <button class="btn b1" onclick="savePlace()">حفظ</button>
- <button class="btn b3" id="fDel" onclick="delPlace()">حذف المكان</button>
+<header><button class="ib" onclick="closeForm()">✕ إلغاء</button><h1 id="fTitle" style="font-size:20px;text-align:center">مكان جديد</h1></header>
+<label>اسم المكان</label>
+<input id="fName" placeholder="مثال: المخيم، البئر، المراح">
+<label>الإحداثيات</label>
+<button class="btn b1" style="margin-top:0" onclick="useHere()">📍 حفظ موقعي الحالي</button>
+<textarea id="fCoord" placeholder="24.7136, 46.6753" oninput="checkCoord()"></textarea>
+<div class="hint" id="fHint"></div>
+<label>اللون</label>
+<div class="colors" id="fColors"></div>
+<label>ملاحظة (اختياري)</label>
+<input id="fNote" placeholder="مثال: بعد الطعس الكبير">
+<button class="btn b1" onclick="savePlace()">حفظ</button>
+<button class="btn b3" id="fDel" onclick="delPlace()">حذف المكان</button>
 </section>
-
-<!-- الإعدادات -->
+<section class="page" id="rform">
+<header><button class="ib" onclick="go('home')">✕ إلغاء</button><h1 id="rTitle" style="font-size:20px;text-align:center">مسار جديد</h1></header>
+<label>اسم المسار</label>
+<input id="rName" placeholder="مثال: جولة الآبار">
+<label>محطات المسار بالترتيب</label>
+<div class="stops" id="rStops"></div>
+<label>اضغط على المكان لإضافته للمسار</label>
+<div class="chips" id="rChips"></div>
+<div class="hint" id="rLen"></div>
+<button class="btn b1" onclick="saveRoute()">حفظ المسار</button>
+<button class="btn b3" id="rDel" onclick="delRoute()">حذف المسار</button>
+</section>
+<section class="page" id="tpage">
+<header><button class="ib" onclick="go('home')">→ رجوع</button><h1 id="tName" style="font-size:22px"></h1><button class="ib" onclick="renameTrack()">✏️</button></header>
+<div class="sub" id="tDate"></div>
+<canvas class="map" id="tMap"></canvas>
+<div class="stat" style="margin-top:12px">
+<div class="box"><i>الطول</i><b id="tLen">—</b></div>
+<div class="box"><i>المدة</i><b id="tDur">—</b></div>
+<div class="box"><i>يبعد عنك</i><b id="tFar">—</b></div>
+</div>
+<button class="btn b1" onclick="followTrack(-1)">↩️ ارجع على الأثر (من نهايته لبدايته)</button>
+<button class="btn b2" onclick="followTrack(1)">▶️ امشِ عليه من بدايته</button>
+<button class="btn b2" onclick="trackEndPlace()">📍 احفظ نهاية الأثر كمكان</button>
+<button class="btn b3" onclick="delTrack()">حذف الأثر</button>
+</section>
 <section class="page" id="set">
- <header><button class="ib" onclick="go('home')">→ رجوع</button><h1 style="font-size:20px">الإعدادات</h1></header>
- <label>اعتبرني وصلت عندما أكون أقرب من (متر)</label>
- <input id="sRad" inputmode="numeric" onchange="saveSet()">
- <label>ترتيب الأماكن في الصفحة الأولى</label>
- <select id="sSort" onchange="saveSet()"><option value="near">الأقرب أولًا</option><option value="name">حسب الاسم</option><option value="add">حسب الإضافة</option></select>
- <button class="btn b2" onclick="exportData()">💾 حفظ نسخة احتياطية في الملفات</button>
- <button class="btn b2" onclick="document.getElementById('imp').click()">📂 استرداد نسخة</button>
- <input type="file" id="imp" accept=".json,application/json" style="display:none" onchange="importData(this)">
- <div class="note">التطبيق يعمل بالـGPS فقط بدون إنترنت. لا تنسَ حفظ موقع المخيم أو السيارة قبل أن تبتعد، ليسهل الرجوع إليه.</div>
+<header><button class="ib" onclick="go('home')">→ رجوع</button><h1 style="font-size:20px">الإعدادات</h1></header>
+<label>اعتبرني وصلت عندما أكون أقرب من (متر)</label>
+<input id="sRad" inputmode="numeric" onchange="saveSet()">
+<label>ترتيب الأماكن في الصفحة الأولى</label>
+<select id="sSort" onchange="saveSet()"><option value="near">الأقرب أولًا</option><option value="name">حسب الاسم</option><option value="add">حسب الإضافة</option></select>
+<button class="btn b2" onclick="exportData()">💾 حفظ نسخة احتياطية في الملفات</button>
+<button class="btn b2" onclick="document.getElementById('imp').click()">📂 استرداد نسخة</button>
+<input type="file" id="imp" accept=".json,application/json" style="display:none" onchange="importData(this)">
+<div class="note">التطبيق يعمل بالـGPS فقط بدون إنترنت. لا تنسَ حفظ موقع المخيم أو السيارة قبل أن تبتعد.<br>تسجيل الأثر يعمل والتطبيق مفتوح؛ الشاشة تبقى مضاءة أثناء التسجيل، فلا تقفل الجوال ولا تخرج من التطبيق.</div>
 </section>
-
 <script>
-/* ===== أدوات الأرقام ===== */
 const AR='٠١٢٣٤٥٦٧٨٩';
 const ar=s=>String(s).replace(/\d/g,d=>AR[d]).replace(/\./g,'٫');
 const en=s=>String(s).replace(/[٠-٩]/g,d=>AR.indexOf(d)).replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/٫/g,'.').replace(/،/g,',');
 const COLORS=['#f0a23a','#e85d4a','#4fb3d9','#7fd18b','#c58fe8','#f2d14b','#e8e8e8','#d98a5a'];
-
-/* ===== البيانات ===== */
-let places=[],set={rad:50,sort:'near'};
-try{places=JSON.parse(localStorage.getItem('dalili_places')||'[]')}catch(e){}
-try{Object.assign(set,JSON.parse(localStorage.getItem('dalili_set')||'{}'))}catch(e){}
-function save(){try{localStorage.setItem('dalili_places',JSON.stringify(places))}catch(e){}autoBackup()}
-function saveSet(){set.rad=Math.max(5,+en(document.getElementById('sRad').value)||50);set.sort=document.getElementById('sSort').value;try{localStorage.setItem('dalili_set',JSON.stringify(set))}catch(e){}renderList()}
-
-/* ===== حساب المسافة والاتجاه ===== */
+const $=i=>document.getElementById(i);
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const LS={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){alert('الذاكرة ممتلئة، احذف بعض الآثار القديمة')}}};
+let places=LS.get('dalili_places',[]),routes=LS.get('dalili_routes',[]),tracks=LS.get('dalili_tracks',[]);
+let set=Object.assign({rad:50,sort:'near'},LS.get('dalili_set',{}));
+let rec=LS.get('dalili_rec',null);
+function save(){LS.set('dalili_places',places);LS.set('dalili_routes',routes);LS.set('dalili_tracks',tracks);autoBackup()}
+function saveSet(){set.rad=Math.max(5,+en($('sRad').value)||50);set.sort=$('sSort').value;LS.set('dalili_set',set);renderList()}
 const R=6371000,rad=x=>x*Math.PI/180,deg=x=>x*180/Math.PI;
 function dist(a,b){const dφ=rad(b.lat-a.lat),dλ=rad(b.lon-a.lon);const h=Math.sin(dφ/2)**2+Math.cos(rad(a.lat))*Math.cos(rad(b.lat))*Math.sin(dλ/2)**2;return 2*R*Math.asin(Math.sqrt(h))}
 function bearing(a,b){const φ1=rad(a.lat),φ2=rad(b.lat),dλ=rad(b.lon-a.lon);const y=Math.sin(dλ)*Math.cos(φ2),x=Math.cos(φ1)*Math.sin(φ2)-Math.sin(φ1)*Math.cos(φ2)*Math.cos(dλ);return (deg(Math.atan2(y,x))+360)%360}
+const P=a=>({lat:a[0],lon:a[1]});
 const DIRS=['شمال','شمال شرق','شرق','جنوب شرق','جنوب','جنوب غرب','غرب','شمال غرب'];
 const dirName=b=>DIRS[Math.round(b/45)%8];
-function fmtDist(m){if(m<1000)return ar(Math.round(m))+' <small>متر</small>';if(m<10000)return ar((m/1000).toFixed(2))+' <small>كم</small>';return ar((m/1000).toFixed(1))+' <small>كم</small>'}
+function fmtDist(m){if(m<1000)return ar(Math.round(m))+' <small>متر</small>';return ar((m/1000).toFixed(m<10000?2:1))+' <small>كم</small>'}
 function fmtDistS(m){if(m<1000)return ar(Math.round(m))+' م';return ar((m/1000).toFixed(m<10000?2:1))+' كم'}
-
-/* ===== قراءة الإحداثيات ===== */
+function fmtDur(s){s=Math.round(s/60);return s<60?ar(s)+' د':ar(Math.floor(s/60))+' س '+ar(s%60)+' د'}
+function fmtDate(t){const d=new Date(t*1000);return ar(d.getDate()+'/'+(d.getMonth()+1)+'/'+d.getFullYear()+' — '+d.getHours()+':'+String(d.getMinutes()).padStart(2,'0'))}
+function pathLen(pts){let s=0;for(let i=1;i<pts.length;i++)s+=dist(P(pts[i-1]),P(pts[i]));return s}
 function parseCoord(txt){
- let s=en(txt).toUpperCase().trim();if(!s)return null;
- const neg={lat:/[S]|جنوب/.test(s),lon:/[W]|غرب/.test(s)};
- const nums=(s.match(/-?\d+(\.\d+)?/g)||[]).map(Number);
- let lat,lon;
- if(nums.length===2){[lat,lon]=nums}
- else if(nums.length===4){lat=Math.abs(nums[0])+nums[1]/60;lon=Math.abs(nums[2])+nums[3]/60;if(nums[0]<0)lat=-lat;if(nums[2]<0)lon=-lon}
- else if(nums.length===6){lat=Math.abs(nums[0])+nums[1]/60+nums[2]/3600;lon=Math.abs(nums[3])+nums[4]/60+nums[5]/3600;if(nums[0]<0)lat=-lat;if(nums[3]<0)lon=-lon}
- else return null;
- if(neg.lat&&lat>0)lat=-lat;if(neg.lon&&lon>0)lon=-lon;
- if(Math.abs(lat)>90||Math.abs(lon)>180)return null;
- return {lat:+lat.toFixed(6),lon:+lon.toFixed(6)};
+let s=en(txt).toUpperCase().trim();if(!s)return null;
+const neg={lat:/[S]|جنوب/.test(s),lon:/[W]|غرب/.test(s)};
+const nums=(s.match(/-?\d+(\.\d+)?/g)||[]).map(Number);
+let lat,lon;
+if(nums.length===2){[lat,lon]=nums}
+else if(nums.length===4){lat=Math.abs(nums[0])+nums[1]/60;lon=Math.abs(nums[2])+nums[3]/60;if(nums[0]<0)lat=-lat;if(nums[2]<0)lon=-lon}
+else if(nums.length===6){lat=Math.abs(nums[0])+nums[1]/60+nums[2]/3600;lon=Math.abs(nums[3])+nums[4]/60+nums[5]/3600;if(nums[0]<0)lat=-lat;if(nums[3]<0)lon=-lon}
+else return null;
+if(neg.lat&&lat>0)lat=-lat;if(neg.lon&&lon>0)lon=-lon;
+if(Math.abs(lat)>90||Math.abs(lon)>180)return null;
+return {lat:+lat.toFixed(6),lon:+lon.toFixed(6)};
 }
-
-/* ===== الموقع (GPS) ===== */
-let me=null,gpsHead=null,speed=null,compass=null,arrivedShown=false;
+let me=null,gpsHead=null,speed=null,compass=null;
 const isNative=()=>{const C=window.Capacitor;return !!(C&&C.isNativePlatform&&C.isNativePlatform())};
 function onPos(p){
- const c=p.coords;me={lat:c.latitude,lon:c.longitude,acc:c.accuracy};
- speed=(c.speed!=null&&!isNaN(c.speed))?c.speed:null;
- gpsHead=(c.heading!=null&&!isNaN(c.heading)&&speed!=null&&speed>1.5)?c.heading:null;
- updGps();renderList();updNav();
+const c=p.coords;me={lat:c.latitude,lon:c.longitude,acc:c.accuracy};
+speed=(c.speed!=null&&!isNaN(c.speed))?c.speed:null;
+gpsHead=(c.heading!=null&&!isNaN(c.heading)&&speed!=null&&speed>1.5)?c.heading:null;
+recPoint();updGps();renderList();updNav();
 }
-function onErr(e){const t=document.getElementById('gTxt');document.getElementById('gDot').className='dot';t.textContent='لا يوجد موقع — تأكد أن الموقع (GPS) مفعّل وأن التطبيق مسموح له به';}
+function onErr(){$('gDot').className='dot';$('gTxt').textContent='لا يوجد موقع — تأكد أن الموقع (GPS) مفعّل وأن التطبيق مسموح له به'}
 async function startGps(){
- const G=window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.Geolocation;
- if(isNative()&&G){
-  try{await G.requestPermissions()}catch(e){}
-  try{await G.watchPosition({enableHighAccuracy:true,timeout:20000,maximumAge:0},(p,err)=>{if(p)onPos(p);else if(err)onErr(err)})}catch(e){onErr(e)}
- }else if(navigator.geolocation){
-  navigator.geolocation.watchPosition(onPos,onErr,{enableHighAccuracy:true,maximumAge:0,timeout:20000});
- }else onErr();
+const G=window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.Geolocation;
+if(isNative()&&G){
+try{await G.requestPermissions()}catch(e){}
+try{await G.watchPosition({enableHighAccuracy:true,timeout:20000,maximumAge:0},(p,err)=>{if(p)onPos(p);else if(err)onErr()})}catch(e){onErr()}
+}else if(navigator.geolocation){navigator.geolocation.watchPosition(onPos,onErr,{enableHighAccuracy:true,maximumAge:0,timeout:20000})}
+else onErr();
 }
-function updGps(){
- if(!me)return;const d=document.getElementById('gDot');
- d.className='dot '+(me.acc<=20?'ok':me.acc<=60?'mid':'');
- document.getElementById('gTxt').textContent='موقعك محدد — الدقة '+ar(Math.round(me.acc))+' متر';
-}
-
-/* ===== البوصلة ===== */
+function updGps(){if(!me)return;$('gDot').className='dot '+(me.acc<=20?'ok':me.acc<=60?'mid':'');$('gTxt').textContent='موقعك محدد — الدقة '+ar(Math.round(me.acc))+' متر'}
 function onOri(e){
- let h=null;
- if(e.webkitCompassHeading!=null)h=e.webkitCompassHeading;
- else if(e.absolute||e.type==='deviceorientationabsolute'){if(e.alpha!=null)h=360-e.alpha}
- if(h==null)return;
- const ang=(screen.orientation&&screen.orientation.angle)||window.orientation||0;
- h=(h+ang+360)%360;
- compass=compass==null?h:smooth(compass,h);
- updNav();
+let h=null;
+if(e.webkitCompassHeading!=null)h=e.webkitCompassHeading;
+else if(e.absolute||e.type==='deviceorientationabsolute'){if(e.alpha!=null)h=360-e.alpha}
+if(h==null)return;
+const ang=(screen.orientation&&screen.orientation.angle)||window.orientation||0;
+h=(h+ang+360)%360;
+compass=compass==null?h:smooth(compass,h);
+updNav();
 }
 function smooth(a,b){let d=((b-a+540)%360)-180;return (a+d*0.25+360)%360}
 if('ondeviceorientationabsolute' in window)window.addEventListener('deviceorientationabsolute',onOri);
 else window.addEventListener('deviceorientation',onOri);
-
-/* ===== الصفحات ===== */
-let cur=null,lastPage='home';
-function go(id){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('on',p.id===id));if(id!=='form')lastPage=id;
- if(id==='set'){document.getElementById('sRad').value=ar(set.rad);document.getElementById('sSort').value=set.sort}
- if(id==='nav')keepAwake(true);else keepAwake(false);
- window.scrollTo(0,0);
- if(id==='home')renderList();
+const heading=()=>gpsHead!=null?gpsHead:compass;
+let recSaveT=0;
+function startRec(){
+if(rec)return;
+rec={id:uid(),start:Math.floor(Date.now()/1000),pts:[]};LS.set('dalili_rec',rec);
+if(me&&me.acc<=40)recPoint(true);
+updRec();updAwake();renderList();
 }
+function recPoint(force){
+if(!rec||!me||me.acc>40)return;
+const last=rec.pts[rec.pts.length-1];
+if(!force&&last&&dist(P(last),me)<15)return;
+rec.pts.push([+me.lat.toFixed(6),+me.lon.toFixed(6),Math.floor(Date.now()/1000)]);
+const now=Date.now();if(now-recSaveT>15000||rec.pts.length<3){recSaveT=now;LS.set('dalili_rec',rec)}
+updRec();
+}
+function updRec(){
+$('recBar').classList.toggle('on',!!rec);
+if(rec)$('recTxt').textContent='يسجّل الأثر — '+fmtDistS(pathLen(rec.pts));
+}
+function stopRec(){
+if(!rec)return;
+if(rec.pts.length<2){if(confirm('الأثر قصير جدًا ولم يُسجَّل شيء يُذكر. إلغاء التسجيل؟')){rec=null;localStorage.removeItem('dalili_rec');updRec();updAwake();renderList()}return}
+const def='أثر '+fmtDate(rec.start);
+let name=prompt('اسم الأثر:',def);if(name===null)return;name=name.trim()||def;
+const t=rec.pts[rec.pts.length-1][2];
+tracks.unshift({id:rec.id,name,start:rec.start,end:t,pts:rec.pts});
+rec=null;localStorage.removeItem('dalili_rec');save();updRec();updAwake();setTab('tracks');go('home');
+}
+let tab='places',lastPage='home';
+function go(id){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('on',p.id===id));if(id!=='form')lastPage=id;if(id==='set'){$('sRad').value=ar(set.rad);$('sSort').value=set.sort}
+updAwake();window.scrollTo(0,0);
+if(id==='home'){$('list').dataset.sig='';renderList()}
+}
+function setTab(t){tab=t;['places','routes','tracks'].forEach(x=>$('t_'+x).classList.toggle('on',x===t));$('list').dataset.sig='';renderList()}
+function fabClick(){if(tab==='places')openForm();else if(tab==='routes')openRoute();else{rec?stopRec():startRec()}}
 let wl=null;
-async function keepAwake(on){try{if(on&&navigator.wakeLock&&!wl){wl=await navigator.wakeLock.request('screen');wl.addEventListener('release',()=>wl=null)}else if(!on&&wl){await wl.release();wl=null}}catch(e){}}
-document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&document.getElementById('nav').classList.contains('on'))keepAwake(true)});
-
-/* ===== الصفحة الأولى ===== */
+async function updAwake(){const need=$('nav').classList.contains('on')||!!rec;
+try{if(need&&navigator.wakeLock&&!wl){wl=await navigator.wakeLock.request('screen');wl.addEventListener('release',()=>wl=null)}else if(!need&&wl){await wl.release();wl=null}}catch(e){}}
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')updAwake()});
 function renderList(){
- if(!document.getElementById('home').classList.contains('on'))return;
- const L=document.getElementById('list');
- if(!places.length){L.dataset.sig='';L.style.display='block';L.innerHTML='<div class="empty">لا توجد أماكن بعد.<br>اضغط «＋ إضافة مكان» واحفظ موقعك الحالي، أو الصق إحداثيات مكان.</div>';return}
- L.style.display='';
- let arr=places.map(p=>({p,d:me?dist(me,p):null,b:me?bearing(me,p):null}));
- if(set.sort==='near'&&me)arr.sort((a,b)=>a.d-b.d);
- else if(set.sort==='name')arr.sort((a,b)=>a.p.name.localeCompare(b.p.name,'ar'));
- const head=gpsHead!=null?gpsHead:compass;
- const sig=arr.map(x=>x.p.id+x.p.name+x.p.color).join('|');
- if(L.dataset.sig!==sig){
-  L.dataset.sig=sig;
-  L.innerHTML=arr.map(({p})=>`<div class="pl" style="--c:${p.color||'#f0a23a'}" onclick="openNav('${p.id}')">
-   <button class="ed" onclick="event.stopPropagation();openForm('${p.id}')">✏️</button>
-   <b>${esc(p.name)}</b>
-   <span class="d" id="d_${p.id}">—</span>
-   <span class="s"><svg class="mini" id="m_${p.id}" viewBox="0 0 100 100"><path d="M50 8 L72 70 L50 58 L28 70 Z" fill="${p.color||'#f0a23a'}"/></svg> <span id="s_${p.id}">بانتظار الموقع</span></span>
-  </div>`).join('');
- }
- arr.forEach(({p,d,b})=>{
-  const D=document.getElementById('d_'+p.id),S=document.getElementById('s_'+p.id),M=document.getElementById('m_'+p.id);
-  if(!D)return;
-  D.textContent=d==null?'—':fmtDistS(d);
-  S.textContent=b==null?'بانتظار الموقع':dirName(b);
-  M.style.transform='rotate('+(b==null?0:(head!=null?b-head:b))+'deg)';
- });
+if(!$('home').classList.contains('on'))return;
+const L=$('list'),F=$('fab');
+F.classList.toggle('rec',tab==='tracks'&&!!rec);
+F.textContent=tab==='places'?'＋ إضافة مكان':tab==='routes'?'＋ مسار جديد':(rec?'⏹ إيقاف التسجيل':'⏺ ابدأ تسجيل الأثر');
+if(tab==='places')return renderPlaces(L);
+if(tab==='routes')return renderRoutes(L);
+renderTracks(L);
 }
-const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-
-/* ===== صفحة الاتجاه ===== */
-function openNav(id){cur=id;arrivedShown=false;const p=places.find(x=>x.id===id);if(!p)return;
- document.getElementById('nName').textContent=p.name;
- document.getElementById('nSub').textContent=(p.note?p.note+' · ':'')+ar(p.lat.toFixed(5))+' ، '+ar(p.lon.toFixed(5));
- document.getElementById('arrived').style.display='none';
- go('nav');updNav();
+function emptyMsg(L,msg){L.dataset.sig='';L.style.display='block';L.innerHTML='<div class="empty">'+msg+'</div>'}
+function renderPlaces(L){
+if(!places.length)return emptyMsg(L,'لا توجد أماكن بعد.<br>اضغط «＋ إضافة مكان» واحفظ موقعك الحالي، أو الصق إحداثيات مكان.');
+L.style.display='';
+let arr=places.map(p=>({p,d:me?dist(me,p):null,b:me?bearing(me,p):null}));
+if(set.sort==='near'&&me)arr.sort((a,b)=>a.d-b.d);
+else if(set.sort==='name')arr.sort((a,b)=>a.p.name.localeCompare(b.p.name,'ar'));
+const head=heading(),sig='p|'+arr.map(x=>x.p.id+x.p.name+x.p.color).join('|');
+if(L.dataset.sig!==sig){L.dataset.sig=sig;
+L.innerHTML=arr.map(({p})=>`<div class="pl" style="--c:${p.color||'#f0a23a'}" onclick="navPlace('${p.id}')">
+<button class="ed" onclick="event.stopPropagation();openForm('${p.id}')">✏️</button>
+<b>${esc(p.name)}</b><span class="d" id="d_${p.id}">—</span>
+<span class="s"><svg class="mini" id="m_${p.id}" viewBox="0 0 100 100"><path d="M50 8 L72 70 L50 58 L28 70 Z" fill="${p.color||'#f0a23a'}"/></svg> <span id="s_${p.id}">بانتظار الموقع</span></span></div>`).join('')}
+arr.forEach(({p,d,b})=>{const D=$('d_'+p.id);if(!D)return;
+D.textContent=d==null?'—':fmtDistS(d);$('s_'+p.id).textContent=b==null?'بانتظار الموقع':dirName(b);
+$('m_'+p.id).style.transform='rotate('+(b==null?0:(head!=null?b-head:b))+'deg)'});
+}
+const routeStops=r=>r.stops.map(id=>places.find(p=>p.id===id)).filter(Boolean);
+function renderRoutes(L){
+if(!routes.length)return emptyMsg(L,places.length<2?'المسار يتكوّن من عدة أماكن بالترتيب.<br>أضف مكانين أو أكثر أولًا من تبويب «الأماكن».':'لا توجد مسارات بعد.<br>اضغط «＋ مسار جديد» واختر الأماكن بالترتيب.');
+L.style.display='';
+const sig='r|'+routes.map(r=>r.id+r.name+r.stops.join(',')).join('|');
+if(L.dataset.sig!==sig){L.dataset.sig=sig;
+L.innerHTML=routes.map(r=>{const st=routeStops(r);let len=0;for(let i=1;i<st.length;i++)len+=dist(st[i-1],st[i]);
+return `<div class="pl" style="--c:#4fb3d9" onclick="navRoute('${r.id}')">
+<button class="ed" onclick="event.stopPropagation();openRoute('${r.id}')">✏️</button>
+<b>${esc(r.name)}</b><span class="d">${fmtDistS(len)}</span>
+<span class="s">${ar(st.length)} محطات: ${st.map(p=>esc(p.name)).join(' ← ')}</span></div>`}).join('')}
+}
+function renderTracks(L){
+if(!tracks.length)return emptyMsg(L,rec?'جارٍ تسجيل أول أثر… امشِ وسيُحفظ طريقك.':'الأثر هو الطريق الذي مشيته فعلًا.<br>اضغط «⏺ ابدأ تسجيل الأثر» قبل أن تتحرك، وعند الرجوع يدلّك التطبيق على نفس الطريق.');
+L.style.display='';
+const sig='t|'+tracks.map(t=>t.id+t.name).join('|');
+if(L.dataset.sig!==sig){L.dataset.sig=sig;
+L.innerHTML=tracks.map(t=>`<div class="pl" style="--c:#c58fe8" onclick="openTrack('${t.id}')">
+<b>${esc(t.name)}</b><span class="d">${fmtDistS(pathLen(t.pts))}</span>
+<span class="s">${fmtDate(t.start)}<br>المدة ${fmtDur(t.end-t.start)}</span></div>`).join('')}
+}
+let nv=null,arrivedShown=false,advT=null;
+function navPlace(id){nv={mode:'place',id};startNav()}
+function navRoute(id){const r=routes.find(x=>x.id===id);if(!r||routeStops(r).length<2){alert('المسار يحتاج مكانين على الأقل');return}
+let step=0;if(me){const st=routeStops(r);let best=1e18;st.forEach((p,i)=>{const d=dist(me,p);if(d<best){best=d;step=i}});
+if(step>0&&!confirm('أقرب محطة لك الآن هي «'+st[step].name+'». تبدأ منها؟\n(إلغاء = البدء من أول محطة)'))step=0}
+nv={mode:'route',id,step};startNav()}
+function followTrack(dir){const t=tracks.find(x=>x.id===curTrack);if(!t)return;
+const pts=dir>0?t.pts.slice():t.pts.slice().reverse();
+let idx=0;if(me){let best=1e18;pts.forEach((q,i)=>{const d=dist(me,P(q));if(d<best){best=d;idx=i}})}
+nv={mode:'track',id:t.id,pts,idx,name:t.name+(dir>0?' — من بدايته':' — رجوع')};startNav()}
+function startNav(){arrivedShown=false;clearTimeout(advT);lastRot.a=0;lastRot.r=0;
+$('arrived').style.display='none';$('nEdit').style.display=nv.mode==='place'?'':'none';
+go('nav');setNavHead();updNav()}
+function leaveNav(){clearTimeout(advT);const m=nv&&nv.mode;nv=null;if(m==='track')go('tpage');else{if(m)setTab(m==='route'?'routes':'places');go('home')}}
+function setNavHead(){
+const st=$('nStep'),bt=$('nBtns');st.style.display='none';bt.style.display='none';$('nTotal').style.display='none';
+if(nv.mode==='place'){const p=places.find(x=>x.id===nv.id);if(!p)return;$('nName').textContent=p.name;$('nSub').textContent=(p.note?p.note+' · ':'')+ar(p.lat.toFixed(5))+' ، '+ar(p.lon.toFixed(5))}
+else if(nv.mode==='route'){const r=routes.find(x=>x.id===nv.id),s=routeStops(r),p=s[nv.step];
+$('nName').textContent=p.name;$('nSub').textContent='مسار: '+r.name;
+st.style.display='block';st.textContent='المحطة '+ar(nv.step+1)+' من '+ar(s.length)+(nv.step<s.length-1?' — بعدها: '+s[nv.step+1].name:' — الأخيرة');
+bt.style.display='flex';$('nTotal').style.display='block'}
+else{$('nName').textContent=nv.name;$('nSub').textContent='اتبع السهم لتبقى على نفس الأثر';$('nTotal').style.display='block'}
+}
+function routeStep(k){if(!nv||nv.mode!=='route')return;const s=routeStops(routes.find(x=>x.id===nv.id));
+nv.step=Math.max(0,Math.min(s.length-1,nv.step+k));arrivedShown=false;clearTimeout(advT);$('arrived').style.display='none';setNavHead();updNav()}
+function navTarget(){
+if(nv.mode==='place'){const p=places.find(x=>x.id===nv.id);return p?{t:p,rest:0,last:true}:null}
+if(nv.mode==='route'){const r=routes.find(x=>x.id===nv.id);if(!r)return null;const s=routeStops(r);let rest=0;for(let i=nv.step+1;i<s.length;i++)rest+=dist(s[i-1],s[i]);return {t:s[nv.step],rest,last:nv.step===s.length-1}}
+const pts=nv.pts;if(!me)return {t:P(pts[nv.idx]),rest:0,last:true};
+let best=1e18,bi=nv.idx;const hi=Math.min(pts.length-1,nv.idx+60);
+for(let i=nv.idx;i<=hi;i++){const d=dist(me,P(pts[i]));if(d<best){best=d;bi=i}}
+nv.idx=bi;nv.off=best;
+let ti=bi;while(ti<pts.length-1&&dist(me,P(pts[ti]))<40)ti++;
+let rest=0;for(let i=ti+1;i<pts.length;i++)rest+=dist(P(pts[i-1]),P(pts[i]));
+return {t:P(pts[ti]),rest,last:ti===pts.length-1,end:P(pts[pts.length-1])};
 }
 function updNav(){
- if(!cur||!document.getElementById('nav').classList.contains('on'))return;
- const p=places.find(x=>x.id===cur);if(!p)return;
- const $=i=>document.getElementById(i);
- if(!me){$('nDist').innerHTML='بانتظار الموقع…';return}
- const d=dist(me,p),b=bearing(me,p);
- const head=gpsHead!=null?gpsHead:compass;
- $('nDist').innerHTML=fmtDist(d);
- $('nBear').textContent='\u2066'+ar(Math.round(b))+'°\u2069 '+dirName(b);
- $('nAcc').textContent=ar(Math.round(me.acc))+' م';
- const kmh=speed!=null?speed*3.6:null;
- $('nSpd').textContent=kmh!=null&&kmh>=1?ar(Math.round(kmh))+' كم/س':'واقف';
- if(kmh!=null&&kmh>=3){const min=d/1000/kmh*60;$('nEta').textContent=min<60?ar(Math.round(min))+' د':ar(Math.floor(min/60))+' س '+ar(Math.round(min%60))+' د'}else $('nEta').textContent='—';
- $('nSrc').textContent=gpsHead!=null?'حركة السيارة':compass!=null?'البوصلة':'غير متوفر';
- $('nHead').textContent=head!=null?'\u2066'+ar(Math.round(head))+'°\u2069':'—';
- if(head!=null){$('arrow').style.transform=`rotate(${turn('a',b-head)}deg)`;$('ringR').style.transform=`rotate(${turn('r',-head)}deg)`}
- else{$('arrow').style.transform=`rotate(${turn('a',b)}deg)`;$('ringR').style.transform='rotate(0deg)'}
- if(d<=set.rad){$('arrived').style.display='block';if(!arrivedShown){arrivedShown=true;try{navigator.vibrate&&navigator.vibrate([300,150,300])}catch(e){}}}
- else if(d>set.rad*1.5){$('arrived').style.display='none';arrivedShown=false}
+if(!nv||!$('nav').classList.contains('on'))return;
+const T=navTarget();if(!T||!T.t)return;
+if(!me){$('nDist').innerHTML='بانتظار الموقع…';return}
+const d=dist(me,T.t),b=bearing(me,T.t),head=heading();
+$('nDist').innerHTML=fmtDist(d);
+if(nv.mode!=='place')$('nTotal').textContent='المتبقي حتى النهاية: '+fmtDistS(d+T.rest);
+$('nBear').textContent='\u2066'+ar(Math.round(b))+'°\u2069 '+dirName(b);
+$('nAcc').textContent=ar(Math.round(me.acc))+' م';
+const kmh=speed!=null?speed*3.6:null;
+$('nSpd').textContent=kmh!=null&&kmh>=1?ar(Math.round(kmh))+' كم/س':'واقف';
+if(kmh!=null&&kmh>=3)$('nEta').textContent=fmtDur((d+T.rest)/1000/kmh*3600);else $('nEta').textContent='—';
+$('nSrc').textContent=gpsHead!=null?'حركة السيارة':compass!=null?'البوصلة':'غير متوفر';
+$('nHead').textContent=head!=null?'\u2066'+ar(Math.round(head))+'°\u2069':'—';
+if(head!=null){$('arrow').style.transform=`rotate(${turn('a',b-head)}deg)`;$('ringR').style.transform=`rotate(${turn('r',-head)}deg)`}
+else{$('arrow').style.transform=`rotate(${turn('a',b)}deg)`;$('ringR').style.transform='rotate(0deg)'}
+const O=$('nOff');
+if(nv.mode==='track'&&nv.off>80){O.style.display='block';O.textContent='⚠️ أنت بعيد عن الأثر '+fmtDistS(nv.off)+' — اتبع السهم للرجوع إليه'}else O.style.display='none';
+const endD=nv.mode==='track'?dist(me,T.end):d;
+const arrivedNow=nv.mode==='track'?(T.last&&endD<=set.rad):d<=set.rad;
+if(arrivedNow){
+if(!arrivedShown){arrivedShown=true;try{navigator.vibrate&&navigator.vibrate([300,150,300])}catch(e){}
+const A=$('arrived');A.style.display='block';
+if(nv.mode==='route'&&!T.last){A.textContent='✅ وصلت — أنتقل للمحطة التالية…';advT=setTimeout(()=>routeStep(1),3000)}
+else A.textContent=nv.mode==='place'?'✅ وصلت إلى المكان':'🏁 انتهى '+(nv.mode==='route'?'المسار':'الأثر')}
+}else if(nv.mode==='place'&&d>set.rad*1.5&&arrivedShown){$('arrived').style.display='none';arrivedShown=false}
+drawNavMap(T);
 }
-/* لفّ السهم بأقصر طريق بدل الدوران الكامل */
 const lastRot={a:0,r:0};
-function turn(k,target){let cur=lastRot[k];let d=((target-cur)%360+540)%360-180;lastRot[k]=cur+d;return lastRot[k]}
-
-/* ===== النموذج ===== */
-let editId=null,fColor=COLORS[0];
-function openForm(id){
- editId=id||null;const p=id?places.find(x=>x.id===id):null;
- document.getElementById('fTitle').textContent=p?'تعديل المكان':'مكان جديد';
- document.getElementById('fName').value=p?p.name:'';
- document.getElementById('fCoord').value=p?ar(p.lat)+' ، '+ar(p.lon):'';
- document.getElementById('fNote').value=p&&p.note?p.note:'';
- fColor=p&&p.color?p.color:COLORS[places.length%COLORS.length];
- document.getElementById('fDel').style.display=p?'block':'none';
- drawColors();checkCoord(true);go('form');
+function turn(k,target){let c=lastRot[k];let d=((target-c)%360+540)%360-180;lastRot[k]=c+d;return lastRot[k]}
+function drawMap(cv,lines,marks,showMe){
+const w=cv.clientWidth,h=cv.clientHeight,dpr=window.devicePixelRatio||1;
+if(!w)return;cv.width=w*dpr;cv.height=h*dpr;const g=cv.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,w,h);
+const all=[];lines.forEach(l=>l.pts.forEach(p=>all.push(p)));marks.forEach(m=>all.push(m));if(showMe&&me)all.push(me);
+if(!all.length)return;
+let a=Math.min(...all.map(p=>p.lat)),b=Math.max(...all.map(p=>p.lat)),c=Math.min(...all.map(p=>p.lon)),d=Math.max(...all.map(p=>p.lon));
+const k=Math.cos(rad((a+b)/2)),pad=26;
+let sw=(d-c)*k||1e-4,sh=(b-a)||1e-4;const sc=Math.min((w-2*pad)/sw,(h-2*pad)/sh);
+const ox=(w-sw*sc)/2,oy=(h-sh*sc)/2;
+const X=p=>ox+(p.lon-c)*k*sc,Y=p=>h-oy-(p.lat-a)*sc;
+lines.forEach(l=>{g.strokeStyle=l.color;g.lineWidth=l.w||3;g.setLineDash(l.dash||[]);g.lineJoin='round';g.beginPath();l.pts.forEach((p,i)=>i?g.lineTo(X(p),Y(p)):g.moveTo(X(p),Y(p)));g.stroke()});
+g.setLineDash([]);
+marks.forEach(m=>{g.fillStyle=m.color;g.beginPath();g.arc(X(m),Y(m),m.r||7,0,7);g.fill();if(m.label){g.fillStyle='#f6ead7';g.font='bold 13px system-ui';g.textAlign='center';g.fillText(m.label,X(m),Y(m)-11)}});
+if(showMe&&me){g.fillStyle='#4fb3d9';g.strokeStyle='#fff';g.lineWidth=2;g.beginPath();g.arc(X(me),Y(me),8,0,7);g.fill();g.stroke()}
+g.fillStyle='#ff6b5b';g.font='bold 14px system-ui';g.textAlign='center';g.fillText('ش ↑',w-22,18);
+const m=niceScale(90/sc*111320);const px=m/111320*sc;g.strokeStyle='#b9a588';g.lineWidth=2;g.beginPath();g.moveTo(12,h-12);g.lineTo(12+px,h-12);g.stroke();
+g.fillStyle='#b9a588';g.font='12px system-ui';g.textAlign='left';g.fillText(fmtDistS(m),12,h-18);
 }
-function drawColors(){document.getElementById('fColors').innerHTML=COLORS.map(c=>`<button style="background:${c}" class="${c===fColor?'sel':''}" onclick="fColor='${c}';drawColors()"></button>`).join('')}
+function niceScale(v){const e=Math.pow(10,Math.floor(Math.log10(v)));for(const n of [1,2,5,10])if(n*e>=v*0.6)return n*e;return 10*e}
+let mapT=0;
+function drawNavMap(T){const now=Date.now();if(now-mapT<1500)return;mapT=now;const cv=$('nMap');
+if(nv.mode==='place'){const p=places.find(x=>x.id===nv.id);drawMap(cv,me?[{pts:[me,p],color:'#f0a23a',dash:[6,6],w:2}]:[],[{lat:p.lat,lon:p.lon,color:p.color||'#f0a23a',label:p.name}],true)}
+else if(nv.mode==='route'){const s=routeStops(routes.find(x=>x.id===nv.id));
+drawMap(cv,[{pts:s,color:'#4fb3d9',w:3}].concat(me?[{pts:[me,s[nv.step]],color:'#f0a23a',dash:[6,6],w:2}]:[]),s.map((p,i)=>({lat:p.lat,lon:p.lon,color:i===nv.step?'#f0a23a':i<nv.step?'#7fd18b':'#e8e8e8',label:ar(i+1)})),true)}
+else{const pts=nv.pts.map(P);drawMap(cv,[{pts,color:'#c58fe8',w:3},{pts:pts.slice(0,nv.idx+1),color:'#7fd18b',w:3}],[{...pts[0],color:'#7fd18b',label:'بداية'},{...pts[pts.length-1],color:'#ff6b5b',label:'نهاية'},{...T.t,color:'#f0a23a',r:5}],true)}
+}
+let editId=null,fColor=COLORS[0];
+const HINT='أو الصق الإحداثيات (من خرائط قوقل أو من شخص أرسلها لك) — تقبل الأرقام العربية والإنجليزية، والدرجات والدقائق.';
+function openForm(id,pre){
+editId=id||null;const p=id?places.find(x=>x.id===id):null;
+$('fTitle').textContent=p?'تعديل المكان':'مكان جديد';
+$('fName').value=p?p.name:(pre&&pre.name||'');
+$('fCoord').value=p?ar(p.lat)+' ، '+ar(p.lon):(pre?ar(pre.lat)+' ، '+ar(pre.lon):'');
+$('fNote').value=p&&p.note?p.note:'';
+fColor=p&&p.color?p.color:COLORS[places.length%COLORS.length];
+$('fDel').style.display=p?'block':'none';
+drawColors();checkCoord(true);go('form');
+}
+function drawColors(){$('fColors').innerHTML=COLORS.map(c=>`<button style="background:${c}" class="${c===fColor?'sel':''}" onclick="fColor='${c}';drawColors()"></button>`).join('')}
 function checkCoord(quiet){
- const v=document.getElementById('fCoord').value,h=document.getElementById('fHint');
- if(!v.trim()){h.className='hint';h.textContent='أو الصق الإحداثيات (من خرائط قوقل أو من شخص أرسلها لك) — تقبل الأرقام العربية والإنجليزية، والدرجات والدقائق.';return null}
- const c=parseCoord(v);
- if(c){h.className='hint ok-t';h.textContent='✔ خط العرض '+ar(c.lat)+' — خط الطول '+ar(c.lon)+(me?' — يبعد عنك '+fmtDistS(dist(me,c)):'')}
- else if(!quiet){h.className='hint';h.style.color='var(--bad)';h.textContent='لم أفهم الإحداثيات، اكتبها هكذا: ٢٤٫٧١٣٦ ، ٤٦٫٦٧٥٣'}
- if(c)h.style.color='';
- return c;
+const v=$('fCoord').value,h=$('fHint');h.style.color='';
+if(!v.trim()){h.className='hint';h.textContent=HINT;return null}
+const c=parseCoord(v);
+if(c){h.className='hint ok-t';h.textContent='✔ خط العرض '+ar(c.lat)+' — خط الطول '+ar(c.lon)+(me?' — يبعد عنك '+fmtDistS(dist(me,c)):'')}
+else if(!quiet){h.className='hint';h.style.color='var(--bad)';h.textContent='لم أفهم الإحداثيات، اكتبها هكذا: ٢٤٫٧١٣٦ ، ٤٦٫٦٧٥٣'}
+return c;
 }
 function useHere(){
- if(!me){alert('لم يتحدد موقعك بعد، انتظر قليلًا وتأكد أن الـGPS مفعّل');return}
- if(me.acc>50&&!confirm('دقة الموقع الآن '+ar(Math.round(me.acc))+' متر فقط. هل تحفظه؟ (الأفضل الانتظار حتى تقل)'))return;
- document.getElementById('fCoord').value=ar(me.lat.toFixed(6))+' ، '+ar(me.lon.toFixed(6));checkCoord();
+if(!me){alert('لم يتحدد موقعك بعد، انتظر قليلًا وتأكد أن الـGPS مفعّل');return}
+if(me.acc>50&&!confirm('دقة الموقع الآن '+ar(Math.round(me.acc))+' متر فقط. هل تحفظه؟ (الأفضل الانتظار حتى تقل)'))return;
+$('fCoord').value=ar(me.lat.toFixed(6))+' ، '+ar(me.lon.toFixed(6));checkCoord();
 }
 function savePlace(){
- const name=document.getElementById('fName').value.trim();
- if(!name){alert('اكتب اسم المكان');return}
- const c=checkCoord();if(!c){alert('الإحداثيات غير صحيحة');return}
- const note=document.getElementById('fNote').value.trim();
- if(editId){const p=places.find(x=>x.id===editId);Object.assign(p,{name,lat:c.lat,lon:c.lon,color:fColor,note})}
- else places.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,5),name,lat:c.lat,lon:c.lon,color:fColor,note});
- save();closeForm(true);
+const name=$('fName').value.trim();if(!name){alert('اكتب اسم المكان');return}
+const c=checkCoord();if(!c){alert('الإحداثيات غير صحيحة');return}
+const note=$('fNote').value.trim();
+if(editId)Object.assign(places.find(x=>x.id===editId),{name,lat:c.lat,lon:c.lon,color:fColor,note});
+else places.push({id:uid(),name,lat:c.lat,lon:c.lon,color:fColor,note});
+save();closeForm();
 }
-function delPlace(){if(!confirm('حذف هذا المكان نهائيًا؟'))return;places=places.filter(x=>x.id!==editId);save();cur=null;go('home')}
-function closeForm(saved){if(lastPage==='nav'&&cur&&places.find(x=>x.id===cur)){openNav(cur)}else go('home')}
-
-/* ===== النسخ الاحتياطي ===== */
+function delPlace(){
+const used=routes.filter(r=>r.stops.includes(editId));
+if(!confirm('حذف هذا المكان نهائيًا؟'+(used.length?'\nسيُحذف أيضًا من '+ar(used.length)+' مسار.':'')))return;
+places=places.filter(x=>x.id!==editId);routes.forEach(r=>r.stops=r.stops.filter(s=>s!==editId));
+save();if(nv&&nv.mode==='place')nv=null;setTab('places');go('home')}
+function closeForm(){if(lastPage==='nav'&&nv&&nv.mode==='place'&&places.find(x=>x.id===nv.id)){startNav()}else if(lastPage==='tpage')go('tpage');else{setTab('places');go('home')}}
+let rEdit=null,rStops=[];
+function openRoute(id){
+if(places.length<2&&!id){alert('أضف مكانين أو أكثر أولًا من تبويب «الأماكن»');return}
+rEdit=id||null;const r=id?routes.find(x=>x.id===id):null;
+$('rTitle').textContent=r?'تعديل المسار':'مسار جديد';$('rName').value=r?r.name:'';
+rStops=r?r.stops.slice():[];$('rDel').style.display=r?'block':'none';drawRF();go('rform');
+}
+function drawRF(){
+const pl=id=>places.find(p=>p.id===id);
+$('rStops').innerHTML=rStops.length?rStops.map((id,i)=>{const p=pl(id);return `<div class="stop" style="--c:${p.color}"><span class="n">${ar(i+1)}</span><b>${esc(p.name)}</b>
+<button onclick="mvStop(${i},-1)">▲</button><button onclick="mvStop(${i},1)">▼</button><button onclick="rStops.splice(${i},1);drawRF()">✕</button></div>`}).join(''):'<div class="hint">لم تختر محطات بعد</div>';
+$('rChips').innerHTML=places.map(p=>`<button style="--c:${p.color}" onclick="rStops.push('${p.id}');drawRF()">＋ ${esc(p.name)}</button>`).join('');
+const s=rStops.map(pl);let len=0;for(let i=1;i<s.length;i++)len+=dist(s[i-1],s[i]);
+$('rLen').textContent=s.length>1?'طول المسار بخطوط مستقيمة: '+fmtDistS(len):'';
+}
+function mvStop(i,k){const j=i+k;if(j<0||j>=rStops.length)return;[rStops[i],rStops[j]]=[rStops[j],rStops[i]];drawRF()}
+function saveRoute(){
+const name=$('rName').value.trim();if(!name){alert('اكتب اسم المسار');return}
+if(rStops.length<2){alert('اختر محطتين على الأقل');return}
+if(rEdit)Object.assign(routes.find(x=>x.id===rEdit),{name,stops:rStops.slice()});else routes.push({id:uid(),name,stops:rStops.slice()});
+save();setTab('routes');go('home');
+}
+function delRoute(){if(!confirm('حذف هذا المسار؟ (الأماكن تبقى كما هي)'))return;routes=routes.filter(x=>x.id!==rEdit);save();setTab('routes');go('home')}
+let curTrack=null;
+function openTrack(id){curTrack=id;const t=tracks.find(x=>x.id===id);if(!t)return;
+$('tName').textContent=t.name;$('tDate').textContent=fmtDate(t.start);
+$('tLen').textContent=fmtDistS(pathLen(t.pts));$('tDur').textContent=fmtDur(t.end-t.start);
+$('tFar').textContent=me?fmtDistS(Math.min(...t.pts.map(q=>dist(me,P(q))))):'—';
+go('tpage');const pts=t.pts.map(P);
+drawMap($('tMap'),[{pts,color:'#c58fe8',w:3}],[{...pts[0],color:'#7fd18b',label:'بداية'},{...pts[pts.length-1],color:'#ff6b5b',label:'نهاية'}],true);
+}
+function renameTrack(){const t=tracks.find(x=>x.id===curTrack);const n=prompt('اسم الأثر:',t.name);if(n&&n.trim()){t.name=n.trim();save();openTrack(t.id)}}
+function delTrack(){if(!confirm('حذف هذا الأثر نهائيًا؟'))return;tracks=tracks.filter(x=>x.id!==curTrack);save();setTab('tracks');go('home')}
+function trackEndPlace(){const t=tracks.find(x=>x.id===curTrack);const e=t.pts[t.pts.length-1];lastPage='tpage';openForm(null,{name:'',lat:e[0],lon:e[1]})}
 const iid=(()=>{try{let v=localStorage.getItem('dalili_iid');if(!v){v=Math.random().toString(36).slice(2,6);localStorage.setItem('dalili_iid',v)}return v}catch(e){return'x'}})();
 const today=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const bodyJSON=()=>JSON.stringify({places,routes,tracks});
 async function writeDoc(name){
- const F=window.Capacitor.Plugins.Filesystem,body=JSON.stringify({places});
- const w=n=>F.writeFile({path:'Dalili/'+n,data:body,directory:'DOCUMENTS',encoding:'utf8',recursive:true});
- try{await w(name);return name}catch(e){const alt=name.replace('.json','-'+iid+Date.now().toString(36).slice(-4)+'.json');await w(alt);return alt}
+const F=window.Capacitor.Plugins.Filesystem,body=bodyJSON();
+const w=n=>F.writeFile({path:'Dalili/'+n,data:body,directory:'DOCUMENTS',encoding:'utf8',recursive:true});
+try{await w(name);return name}catch(e){const alt=name.replace('.json','-'+iid+Date.now().toString(36).slice(-4)+'.json');await w(alt);return alt}
 }
 let abT=null;
 function autoBackup(){if(!isNative())return;clearTimeout(abT);abT=setTimeout(()=>{writeDoc('dalili-last-'+iid+'.json').catch(()=>{})},800)}
 async function exportData(){
- const name='dalili-'+today()+'.json';
- if(isNative()){try{const f=await writeDoc(name);alert('تم الحفظ في الملفات:\nDocuments / Dalili / '+f)}catch(e){alert('تعذر الحفظ: '+(e&&e.message?e.message:e))}return}
- const b=new Blob([JSON.stringify({places})],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;a.click();
+const name='dalili-'+today()+'.json';
+if(isNative()){try{const f=await writeDoc(name);alert('تم الحفظ في الملفات:\nDocuments / Dalili / '+f)}catch(e){alert('تعذر الحفظ: '+(e&&e.message?e.message:e))}return}
+const b=new Blob([bodyJSON()],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;a.click();
 }
 function importData(el){
- const f=el.files[0];if(!f)return;const rd=new FileReader();
- rd.onload=()=>{try{const d=JSON.parse(rd.result);const p=Array.isArray(d)?d:d.places;if(!Array.isArray(p))throw 0;if(confirm('استبدال الأماكن الحالية بالنسخة؟ ('+ar(p.length)+' مكان)')){places=p;save();go('home')}}catch(e){alert('ملف غير صالح')}el.value=''};
- rd.readAsText(f);
+const f=el.files[0];if(!f)return;const rd=new FileReader();
+rd.onload=()=>{try{const d=JSON.parse(rd.result);const p=Array.isArray(d)?d:d.places;if(!Array.isArray(p))throw 0;
+if(confirm('استبدال بياناتك الحالية بالنسخة؟\n'+ar(p.length)+' مكان، '+ar((d.routes||[]).length)+' مسار، '+ar((d.tracks||[]).length)+' أثر')){places=p;routes=d.routes||[];tracks=d.tracks||[];save();setTab('places');go('home')}}catch(e){alert('ملف غير صالح')}el.value=''};
+rd.readAsText(f);
 }
-
-renderList();startGps();
+setTab('places');updRec();updAwake();startGps();
 setInterval(renderList,3000);
 </script>
 </body>
 </html>
+                
