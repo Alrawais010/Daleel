@@ -34,6 +34,15 @@ jobs:
           npm i @capacitor/core@7 @capacitor/cli@7 @capacitor/android@7 @capacitor/filesystem@7 @capacitor/geolocation@7
           npx cap init "$NAME" "$ID" --web-dir www
           npx cap add android
+          ICON="$(ls "$GITHUB_WORKSPACE"/icon*.png 2>/dev/null | head -1)"
+          if [ -n "$ICON" ]; then
+            npm i @capacitor/assets
+            mkdir -p assets
+            cp "$ICON" assets/icon-only.png
+            cp "$ICON" assets/icon-background.png
+            node -e "require('sharp')({create:{width:1024,height:1024,channels:4,background:{r:0,g:0,b:0,alpha:0}}}).png().toFile('assets/icon-foreground.png')"
+            npx @capacitor/assets generate --android
+          fi
           M=android/app/src/main/AndroidManifest.xml
           sed -i 's#</manifest>#<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />\n<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />\n</manifest>#' $M
           npx cap sync android
